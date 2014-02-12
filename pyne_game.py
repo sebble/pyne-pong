@@ -45,7 +45,7 @@ class Racket(Sprite):
         pygame.draw.rect(self.image, pygame.Color(color), self.rect)
         self.rect.center = position
 
-    def update(self):
+#    def update(self):
 #        y = random.randint(-10,10)
 #        self.rect.move_ip(0, y)
 
@@ -121,6 +121,10 @@ def main():
             # on QUIT event, exit the main loop
             if event.type == pygame.QUIT:
                 running = False
+
+            # on key press
+            elif event.type == pygame.KEYDOWN:
+                key_map[event.key]()
 
 
 
