@@ -177,7 +177,7 @@ def main():
 
     # create the score sprite
     pygame.font.init()
-    score = Score("grey", (160,20))
+    score = Score("grey", (WIDTH/2,HEIGHT/12))
 
     # create the ball sprite
     ball = Ball("white", (WIDTH/2,HEIGHT/2), [player1, player2], score)
