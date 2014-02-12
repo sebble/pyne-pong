@@ -96,10 +96,10 @@ def main():
 
     # A map for keys
     key_map = {
-        pygame.K_w: player1.up,
-        pygame.K_s: player1.down,
-        pygame.K_UP: player2.up,
-        pygame.K_DOWN: player2.down
+        pygame.K_w: [player1.up, player1.down],
+        pygame.K_s: [player1.down, player1.up],
+        pygame.K_UP: [player2.up, player2.down],
+        pygame.K_DOWN: [player2.down, player2.up]
     }
 
     # list of sprites to render
@@ -129,7 +129,10 @@ def main():
 
             # on key press
             elif event.type == pygame.KEYDOWN:
-                key_map[event.key]()
+                key_map[event.key][0]()
+            # on key release
+            elif event.type == pygame.KEYUP:
+                key_map[event.key][1]()
 
 
 
