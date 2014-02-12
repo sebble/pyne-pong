@@ -78,7 +78,7 @@ class Racket(Sprite):
         self.rect.move_ip(0, self.velocity)
         # move only within the screen border
         self.rect.top = max(0, self.rect.top)
-        self.rect.bottom = min(240, self.rect.bottom)
+        self.rect.bottom = min(HEIGHT, self.rect.bottom)
 
 
 # define a main function
