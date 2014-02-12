@@ -5,7 +5,14 @@ import pygame
 import random
 from pygame.sprite import Sprite
 
-width, height = 320, 240
+WIDTH, HEIGHT = 320, 240
+
+key_map = {
+    pygame.K_w: player1.up,
+    pygame.K_s: player1.down,
+    pygame.K_UP: player2.up,
+    pygame.K_DOWN: player2.down
+}
 
 class Ball(Sprite):
     """
@@ -40,7 +47,7 @@ class Racket(Sprite):
     def __init__(self, color, position):
         Sprite.__init__(self)
         self.image = pygame.Surface([4, 20])
-        self.rect = pygame.Rect(0, 0, 4, 20) # (x, y, width, height)
+        self.rect = pygame.Rect(0, 0, 4, 20) # (x, y, WIDTH, HEIGHT)
         pygame.draw.rect(self.image, pygame.Color(color), self.rect)
         self.rect.center = position
 
@@ -52,7 +59,7 @@ class Racket(Sprite):
 # define a main function
 def main():
     # create a screen surface of a given size
-    screen = pygame.display.set_mode((width,height))
+    screen = pygame.display.set_mode((WIDTH,HEIGHT))
 
     # set window caption
     pygame.display.set_caption("PONG")
@@ -61,10 +68,10 @@ def main():
     running = True
 
     # create background surface
-    background = pygame.Surface([width, height])
+    background = pygame.Surface([WIDTH, HEIGHT])
     background.fill(pygame.Color("black"))
-    for y in range(0, height, 10):
-        pygame.draw.line(background, pygame.Color("white"), (width / 2,y), (width / 2,y+3))
+    for y in range(0, HEIGHT, 10):
+        pygame.draw.line(background, pygame.Color("white"), (WIDTH / 2,y), (WIDTH / 2,y+3))
 
     # draw background on screen
     screen.blit(background, (0, 0))
@@ -76,7 +83,7 @@ def main():
     clock = pygame.time.Clock()
 
     # create the ball sprite
-    ball = Ball("white", (width /2,height /2))
+    ball = Ball("white", (WIDTH /2,HEIGHT /2))
 
     # create two racket sprites
     player1 = Racket("green", (10, 120))
