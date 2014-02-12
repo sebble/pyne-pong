@@ -11,13 +11,13 @@ HEIGHT = int(WIDTH/4.0*3.0)
 SPEED = int(WIDTH/64)
 DPI = 96
 PADDLE_WIDTH = 2
-PADDLE_LENGTH = 10
+PADDLE_LENGTH = HEIGHT / 24
 
 
 # no operation, dummy function
 def nop():
     pass
-    
+
 class Score(Sprite):
     """
     Displays the game score.
@@ -173,9 +173,12 @@ def main():
         pygame.K_SPACE: [ball.serve, nop]
 
     }
+    # create the score sprite
+    pygame.font.init()
+    score = Score("grey", (160,20))
 
     # list of sprites to render
-    sprites = pygame.sprite.RenderPlain([ball, player1, player2])
+    sprites = pygame.sprite.RenderClear([ball, player1, player2, score])
 
     # main game loop
     while running:
