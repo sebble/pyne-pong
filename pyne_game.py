@@ -162,7 +162,9 @@ class Agent():
             self.racket.rect.centery = self.ball.rect.centery
         
         elif self.mode == 'Hard':
-            if 
+            if self.racket.rect.centery > self.ball.rect.centery:
+                self.racket.up()
+
 
         elif self.mode == 'Useless':
             £
@@ -206,7 +208,7 @@ def main():
     ball = Ball("white", (WIDTH/2,HEIGHT/2), [player1, player2], score)
 
     # create the AI
-    agent = Agent(ball, player2)
+    agent = Agent(ball, player2, 'Hard')
 
     # A map for keys
     key_map = {
