@@ -7,12 +7,6 @@ from pygame.sprite import Sprite
 
 WIDTH, HEIGHT = 320, 240
 
-key_map = {
-    pygame.K_w: player1.up,
-    pygame.K_s: player1.down,
-    pygame.K_UP: player2.up,
-    pygame.K_DOWN: player2.down
-}
 
 class Ball(Sprite):
     """
@@ -52,8 +46,14 @@ class Racket(Sprite):
         self.rect.center = position
 
     def update(self):
-        y = random.randint(-10,10)
-        self.rect.move_ip(0, y)
+#        y = random.randint(-10,10)
+#        self.rect.move_ip(0, y)
+
+    def up(self):
+        self.rect.move_ip(0, -5)
+
+    def down(self):
+        self.rect.move_ip(0, 5)
 
 
 # define a main function
@@ -88,6 +88,14 @@ def main():
     # create two racket sprites
     player1 = Racket("green", (10, 120))
     player2 = Racket("orange", (310, 120))
+
+    # A map for keys
+    key_map = {
+        pygame.K_w: player1.up,
+        pygame.K_s: player1.down,
+        pygame.K_UP: player2.up,
+        pygame.K_DOWN: player2.down
+    }
 
     # list of sprites to render
     sprites = pygame.sprite.RenderPlain([ball, player1, player2])
