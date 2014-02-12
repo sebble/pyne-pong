@@ -152,6 +152,11 @@ class Racket(Sprite):
 class Agent():
     def __init__(self, ball, racket):
         self.racket = racket
+        self.ball = ball
+
+    def update():
+        .rect.centerx
+        pass
 
 # define a main function
 def main():
