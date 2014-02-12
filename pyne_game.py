@@ -109,7 +109,7 @@ def main():
     while running:
 
         # set game frame rate
-        clock.tick(30)
+        clock.tick(120)
         pygame.display.set_caption("PONG - {0:.2f} fps".format(clock.get_fps()))
 
         # animate sprites
@@ -128,12 +128,11 @@ def main():
                 running = False
 
             # on key press
-            elif event.type == pygame.KEYDOWN:
+            elif event.type == pygame.KEYDOWN and event.key in key_map:
                 key_map[event.key][0]()
             # on key release
-            elif event.type == pygame.KEYUP:
+            elif event.type == pygame.KEYUP and event.key in key_map:
                 key_map[event.key][1]()
-
 
 
 # if this module is executed as a script, run the main function
