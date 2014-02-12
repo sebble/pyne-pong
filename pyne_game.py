@@ -109,7 +109,7 @@ def main():
     while running:
 
         # set game frame rate
-        clock.tick(60)
+        clock.tick(30)
         pygame.display.set_caption("PONG - {0:.2f} fps".format(clock.get_fps()))
 
         # animate sprites
