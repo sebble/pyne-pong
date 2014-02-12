@@ -148,6 +148,10 @@ class Racket(Sprite):
         self.rect.top = max(0, self.rect.top)
         self.rect.bottom = min(HEIGHT, self.rect.bottom)
 
+# Make some IA !
+class Agent():
+    def __init__(racket):
+        self.racket = racket
 
 # define a main function
 def main():
@@ -185,6 +189,9 @@ def main():
 
     # create the ball sprite
     ball = Ball("white", (WIDTH/2,HEIGHT/2), [player1, player2], score)
+
+    # create the AI
+    ai = Agent(player2)
 
     # A map for keys
     key_map = {
