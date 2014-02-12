@@ -164,10 +164,12 @@ class Agent():
         elif self.mode == 'Hard':
             if self.racket.rect.centery > self.ball.rect.centery:
                 self.racket.up()
+            else:
+                self.racket.down()
 
 
         elif self.mode == 'Useless':
-            £
+            pass
 
 
 # define a main function
