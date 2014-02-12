@@ -31,6 +31,7 @@ class Ball(Sprite):
         y = random.randint(-3,3)
         self.rect.move_ip(x, y)
 
+
 class Racket(Sprite):
     """
     Handles behaviour of the players racket.
@@ -46,6 +47,7 @@ class Racket(Sprite):
     def update(self):
         y = random.randint(-10,10)
         self.rect.move_ip(0, y)
+
 
 # define a main function
 def main():
