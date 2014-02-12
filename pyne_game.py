@@ -9,7 +9,7 @@ from pygame.sprite import Sprite
 WIDTH, HEIGHT = 640, 480
 HEIGHT = int(WIDTH/4.0*3.0)
 SPEED = int(WIDTH/64)
-MAX_VELOCITY = SPEED * 5
+MAX_VELOCITY = SPEED * 2
 
 PADDLE_DEPTH = WIDTH / 128
 PADDLE_LENGTH = HEIGHT / 12
@@ -138,7 +138,7 @@ class Racket(Sprite):
         self.velocity = 0
 
     def up(self):
-        if self.velocity < MAX_VELOCITY:
+        if self.velocity < -MAX_VELOCITY:
             self.velocity -= SPEED
 
     def down(self):
