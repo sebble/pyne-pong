@@ -6,7 +6,7 @@ import random
 import math
 from pygame.sprite import Sprite
 
-WIDTH, HEIGHT = 320, 240
+WIDTH, HEIGHT = 640, 480
 
 
 # no operation, dummy function
@@ -108,11 +108,11 @@ def main():
     clock = pygame.time.Clock()
 
     # create the ball sprite
-    ball = Ball("white", (WIDTH /2,HEIGHT /2))
+    ball = Ball("white", (WIDTH/2,HEIGHT/2))
 
     # create two racket sprites
-    player1 = Racket("green", (10, 120))
-    player2 = Racket("orange", (310, 120))
+    player1 = Racket("green", (10, HEIGHT/2))
+    player2 = Racket("orange", (WIDTH - 10, HEIGHT/2))
 
     # A map for keys
     key_map = {
