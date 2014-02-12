@@ -7,8 +7,8 @@ import math
 from pygame.sprite import Sprite
 
 WIDTH, HEIGHT = 640, 480
-HEIGHT = WIDTH/4.0*3.0
-SPEED = WIDTH/32
+HEIGHT = int(WIDTH/4.0*3.0)
+SPEED = int(WIDTH/32)
 
 
 # no operation, dummy function
@@ -41,6 +41,15 @@ class Ball(Sprite):
 
     def update(self):
         self.rect.move_ip(*self.velocity)
+
+        # bounce the ball of the top screen border
+        if self.rect.top < 0:
+            self.velocity[1] *= -1
+            self.rect.top = 1
+        # bounce the ball of the bottom screen border
+        elif self.rect.bottom > 240:
+            self.velocity[1] *= -1
+            self.rect.bottom = 239
 
     def serve(self):
         # random angle in radians (between 0 and 90 degrees)
