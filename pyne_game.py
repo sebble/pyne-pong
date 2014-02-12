@@ -94,7 +94,7 @@ class Ball(Sprite):
                 break
 
         # detect goal
-        if self.rect.centerx < 0 or self.rect.centerx > 320:
+        if self.rect.centerx < 0 or self.rect.centerx > WIDTH:
             # add a point to the score
             side = 1 if self.rect.centerx < 0 else 0
             self.score.increase(side)
