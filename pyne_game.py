@@ -9,6 +9,7 @@ from pygame.sprite import Sprite
 WIDTH, HEIGHT = 640, 480
 HEIGHT = int(WIDTH/4.0*3.0)
 SPEED = int(WIDTH/64)
+MAX_VELOCITY = SPEED * 5
 
 PADDLE_DEPTH = WIDTH / 128
 PADDLE_LENGTH = HEIGHT / 12
