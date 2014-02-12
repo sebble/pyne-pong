@@ -46,7 +46,7 @@ class Ball(Sprite):
     Handles behaviour of the ball.
 
     """
-    def __init__(self, color, position, rackets):
+    def __init__(self, color, position, rackets, score):
         # call parent class constructor
         Sprite.__init__(self)
 
@@ -175,8 +175,12 @@ def main():
     player1 = Racket("green", (10, HEIGHT/2))
     player2 = Racket("orange", (WIDTH - 10, HEIGHT/2))
 
+    # create the score sprite
+    pygame.font.init()
+    score = Score("grey", (160,20))
+
     # create the ball sprite
-    ball = Ball("white", (WIDTH/2,HEIGHT/2), [player1, player2])
+    ball = Ball("white", (WIDTH/2,HEIGHT/2), [player1, player2], score)
 
     # A map for keys
     key_map = {
@@ -187,16 +191,12 @@ def main():
         pygame.K_SPACE: [ball.serve, nop]
 
     }
-    # create the score sprite
-    pygame.font.init()
-    score = Score("grey", (160,20))
 
     # list of sprites to render
     sprites = pygame.sprite.RenderClear([ball, player1, player2, score])
 
     # main game loop
     while running:
-
         # set game frame rate
         clock.tick(120)
         pygame.display.set_caption("PONG - {0:.2f} fps".format(clock.get_fps()))
