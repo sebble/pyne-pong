@@ -9,8 +9,8 @@ from pygame.sprite import Sprite
 WIDTH, HEIGHT = 640, 480
 HEIGHT = int(WIDTH/4.0*3.0)
 SPEED = int(WIDTH/64)
-DPI = 96
-PADDLE_WIDTH = 2
+
+PADDLE_DEPTH = WIDTH / 256
 PADDLE_LENGTH = HEIGHT / 24
 
 
@@ -110,7 +110,7 @@ class Racket(Sprite):
     """
     def __init__(self, color, position):
         Sprite.__init__(self)
-        self.image = pygame.Surface([4, 20])
+        self.image = pygame.Surface([PADDLE_DEPTH, PADDLE_LENGTH])
         self.rect = pygame.Rect(0, 0, 4, 20) # (x, y, WIDTH, HEIGHT)
         pygame.draw.rect(self.image, pygame.Color(color), self.rect)
         self.rect.center = position
