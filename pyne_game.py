@@ -150,14 +150,23 @@ class Racket(Sprite):
 
 # Make some IA !
 class Agent():
-    def __init__(self, ball, racket):
+    def __init__(self, ball, racket, mode):
         self.racket = racket
         self.ball = ball
+        self.mode = mode
+        self.reaction = 40
 
     def update(self):
+
+        if self.mode == 'Impossible':
+            self.racket.rect.centery = self.ball.rect.centery
         
-        self.racket.rect.centery = self.ball.rect.centery
-        
+        elif self.mode == 'Hard':
+            if 
+
+        elif self.mode == 'Useless':
+            £
+
 
 # define a main function
 def main():
@@ -215,7 +224,7 @@ def main():
     # main game loop
     while running:
         # set game frame rate
-        clock.tick(120)
+        clock.tick(60)
         pygame.display.set_caption("PONG - {0:.2f} fps".format(clock.get_fps()))
 
         # animate sprites
