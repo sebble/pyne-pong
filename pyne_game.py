@@ -9,6 +9,10 @@ from pygame.sprite import Sprite
 WIDTH, HEIGHT = 320, 240
 
 
+# no operation, dummy function
+def nop():
+    pass
+
 class Ball(Sprite):
     """
     Handles behaviour of the ball.
@@ -115,7 +119,9 @@ def main():
         pygame.K_w: [player1.up, player1.down],
         pygame.K_s: [player1.down, player1.up],
         pygame.K_UP: [player2.up, player2.down],
-        pygame.K_DOWN: [player2.down, player2.up]
+        pygame.K_DOWN: [player2.down, player2.up],
+        pygame.K_SPACE: [ball.serve, nop]
+
     }
 
     # list of sprites to render
