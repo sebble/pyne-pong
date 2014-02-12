@@ -138,11 +138,11 @@ class Racket(Sprite):
         self.velocity = 0
 
     def up(self):
-        if self.velocity < -MAX_VELOCITY:
+ #       if self.velocity > MAX_VELOCITY:
             self.velocity -= SPEED
 
     def down(self):
-        if self.velocity < MAX_VELOCITY:
+ #       if self.velocity < MAX_VELOCITY:
             self.velocity += SPEED
 
     def update(self):
