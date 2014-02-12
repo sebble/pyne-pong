@@ -154,9 +154,10 @@ class Agent():
         self.racket = racket
         self.ball = ball
 
-    def update():
-        .rect.centerx
-        pass
+    def update(self):
+        self.racket.rect.centerx = ball.rect.centerx
+        self.racket.rect.centery = ball.rect.centery
+        
 
 # define a main function
 def main():
@@ -196,7 +197,7 @@ def main():
     ball = Ball("white", (WIDTH/2,HEIGHT/2), [player1, player2], score)
 
     # create the AI
-    ai = Agent(ball, player2)
+    agent = Agent(ball, player2)
 
     # A map for keys
     key_map = {
@@ -220,6 +221,7 @@ def main():
         # animate sprites
         sprites.update()
         sprites.draw(screen)
+        agent.update()
 
         # display screen
         pygame.display.flip()
