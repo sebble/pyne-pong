@@ -3,6 +3,7 @@
 # import the pygame module, so you can use it
 import pygame
 import random
+import math
 from pygame.sprite import Sprite
 
 WIDTH, HEIGHT = 320, 240
@@ -27,10 +28,25 @@ class Ball(Sprite):
         # set sprite initial position
         self.rect.center = position
 
+        # two dimensional velocity vector
+        self.velocity = [0,0]
+        # remember starting point
+        self.start = position
+
     def update(self):
-        x = random.randint(-3,3)
-        y = random.randint(-3,3)
-        self.rect.move_ip(x, y)
+        self.rect.move_ip(*self.velocity)
+
+    def serve(self):
+        # random angle in radians (between 0 and 90 degrees)
+        angle = random.uniform(0, math.pi/2)
+        angle *= random.choice([-1,1])
+
+        # choose serving side randomly
+        side = random.choice([-1,1])
+        # rotate the velocity vector [5, 0], flip horizontally if side < 0
+        self.velocity = [side * 5 * math.cos(angle), 5 * math.sin(angle)]
+        # restore the ball starting position
+        self.rect.center = self.start
 
 
 class Racket(Sprite):
