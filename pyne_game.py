@@ -170,9 +170,10 @@ class Agent():
         elif self.mode == 'Slow':
             if random.uniform(0,1)>0.1:
                 return
-            if self.racket.rect.centery > self.ball.rect.centery:
+
+            if self.racket.rect.centery - self.ball.rect.centery > 5:
                 self.racket.up()
-            else:
+            elif self.racket.rect.centery - self.ball.rect.centery < -5:
                 self.racket.down()
 
 
