@@ -88,8 +88,12 @@ def main():
     # create the ball sprite
     ball = Ball("white", (width /2,height /2))
 
+    # create two racket sprites
+    player1 = Racket("green", (10, 120))
+    player2 = Racket("orange", (310, 120))
+
     # list of sprites to render
-    sprites = pygame.sprite.RenderClear([ball])
+    sprites = pygame.sprite.RenderPlain([ball, player1, player2])
 
     # main game loop
     while running:
