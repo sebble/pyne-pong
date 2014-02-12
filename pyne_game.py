@@ -45,15 +45,20 @@ class Racket(Sprite):
         pygame.draw.rect(self.image, pygame.Color(color), self.rect)
         self.rect.center = position
 
-#    def update(self):
-#        y = random.randint(-10,10)
-#        self.rect.move_ip(0, y)
+        # one dimensional velocity vector (vertical axis only)
+        self.velocity = 0
 
     def up(self):
-        self.rect.move_ip(0, -5)
+        self.velocity -= 5
 
     def down(self):
-        self.rect.move_ip(0, 5)
+        self.velocity += 5
+
+    def update(self):
+        self.rect.move_ip(0, self.velocity)
+        # move only within the screen border
+        self.rect.top = max(0, self.rect.top)
+        self.rect.bottom = min(240, self.rect.bottom)
 
 
 # define a main function
