@@ -90,6 +90,8 @@ class Ball(Sprite):
                 # bounce the ball of the racket
                 self.velocity[0] *= -1
                 self.rect.x += self.velocity[0]
+                # pass some racket velocity to the ball
+                self.velocity[1] += 0.5 * racket.velocity
                 # don't check both rackets
                 break
 
@@ -103,11 +105,12 @@ class Ball(Sprite):
 
             self.velocity = [0,0]
 
-        # pass some racket velocity to the ball
-        self.velocity[1] += 0.5 * racket.velocity
-
 
     def serve(self):
+        # if the ball is already in play, do nothing
+        if self.velocity[0] != 0:
+            return
+
         # random angle in radians (between 0 and 90 degrees)
         angle = random.uniform(0, math.pi/8.0*3.0)
         angle *= random.choice([-1,1])
@@ -116,10 +119,6 @@ class Ball(Sprite):
         side = random.choice([-1,1])
         # rotate the velocity vector [5, 0], flip horizontally if side < 0
         self.velocity = [side * SPEED * math.cos(angle), SPEED * math.sin(angle)]
-
-        # if the ball is already in play, do nothing
-        if self.velocity[0] != 0:
-            return
 
 
 class Racket(Sprite):
