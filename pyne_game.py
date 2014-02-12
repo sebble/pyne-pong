@@ -9,11 +9,37 @@ from pygame.sprite import Sprite
 WIDTH, HEIGHT = 640, 480
 HEIGHT = int(WIDTH/4.0*3.0)
 SPEED = int(WIDTH/64)
+DPI = 96
+PADDLE_WIDTH = 2
+PADDLE_LENGTH = 10
 
 
 # no operation, dummy function
 def nop():
     pass
+    
+class Score(Sprite):
+    """
+    Displays the game score.
+
+    """
+    def __init__(self, color, position):
+        pygame.sprite.Sprite.__init__(self)
+        self.color = pygame.Color(color)
+        self.score = [0,0]
+
+        self.font = pygame.font.Font(None, 36)
+        self.render_text()
+        self.rect = self.image.get_rect()
+        self.rect.center = position
+
+    def render_text(self):
+        self.image = self.font.render("{0}     {1}".format(*self.score), True, self.color)
+
+    def increase(self, side):
+        self.score[side] += 1
+        self.render_text()
+
 
 class Ball(Sprite):
     """
