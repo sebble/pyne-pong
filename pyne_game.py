@@ -90,6 +90,15 @@ class Ball(Sprite):
                 # don't check both rackets
                 break
 
+        # detect goal
+        if self.rect.centerx < 0 or self.rect.centerx > 320:
+            # add a point to the score
+            side = 1 if self.rect.centerx < 0 else 0
+            self.score.increase(side)
+            # set the ball in the starting position
+            self.rect.center = self.start
+
+
     def serve(self):
         # random angle in radians (between 0 and 90 degrees)
         angle = random.uniform(0, math.pi/8.0*3.0)
@@ -199,7 +208,7 @@ def main():
         # read events from the event queue
         for event in pygame.event.get():
             # on QUIT event, exit the main loop
-            if event.type == pygame.QUIT or event.key == pygame.K_SPACE:
+            if event.type == pygame.QUIT:
                 running = False
 
             # on key press
