@@ -53,7 +53,7 @@ class Ball(Sprite):
 
     def serve(self):
         # random angle in radians (between 0 and 90 degrees)
-        angle = random.uniform(0, math.pi/2)
+        angle = random.uniform(0, math.pi/8.0*3.0)
         angle *= random.choice([-1,1])
 
         # choose serving side randomly
