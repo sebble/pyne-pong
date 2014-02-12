@@ -8,7 +8,7 @@ from pygame.sprite import Sprite
 
 WIDTH, HEIGHT = 640, 480
 HEIGHT = int(WIDTH/4.0*3.0)
-SPEED = int(WIDTH/32)
+SPEED = int(WIDTH/64)
 
 
 # no operation, dummy function
