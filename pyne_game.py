@@ -20,7 +20,7 @@ class Ball(Sprite):
     Handles behaviour of the ball.
 
     """
-    def __init__(self, color, position):
+    def __init__(self, color, position, rackets):
         # call parent class constructor
         Sprite.__init__(self)
 
@@ -36,8 +36,12 @@ class Ball(Sprite):
 
         # two dimensional velocity vector
         self.velocity = [0,0]
+
         # remember starting point
         self.start = position
+
+        # remember racket sprites for collision check
+        self.rackets = rackets
 
     def update(self):
         self.rect.move_ip(*self.velocity)
@@ -50,6 +54,15 @@ class Ball(Sprite):
         elif self.rect.bottom > HEIGHT:
             self.velocity[1] *= -1
             self.rect.bottom = HEIGHT-1
+
+        # detect collision with the rackets
+        for racket in self.rackets:
+            if self.rect.colliderect(racket.rect):
+                # bounce the ball of the racket
+                self.velocity[0] *= -1
+                self.rect.x += self.velocity[0]
+                # don't check both rackets
+                break
 
     def serve(self):
         # random angle in radians (between 0 and 90 degrees)
