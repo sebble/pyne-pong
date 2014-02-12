@@ -69,6 +69,9 @@ class Ball(Sprite):
         # remember racket sprites for collision check
         self.rackets = rackets
 
+        # remember score
+        self.score = score
+
     def update(self):
         self.rect.move_ip(*self.velocity)
 
@@ -97,6 +100,8 @@ class Ball(Sprite):
             self.score.increase(side)
             # set the ball in the starting position
             self.rect.center = self.start
+
+            self.velocity = [0,0]
 
 
     def serve(self):
