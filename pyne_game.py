@@ -7,6 +7,8 @@ import math
 from pygame.sprite import Sprite
 
 WIDTH, HEIGHT = 640, 480
+HEIGHT = WIDTH/4.0*3.0
+SPEED = WIDTH/32
 
 
 # no operation, dummy function
@@ -48,7 +50,7 @@ class Ball(Sprite):
         # choose serving side randomly
         side = random.choice([-1,1])
         # rotate the velocity vector [5, 0], flip horizontally if side < 0
-        self.velocity = [side * 5 * math.cos(angle), 5 * math.sin(angle)]
+        self.velocity = [side * SPEED * math.cos(angle), SPEED * math.sin(angle)]
         # restore the ball starting position
         self.rect.center = self.start
 
@@ -69,10 +71,10 @@ class Racket(Sprite):
         self.velocity = 0
 
     def up(self):
-        self.velocity -= 5
+        self.velocity -= SPEED
 
     def down(self):
-        self.velocity += 5
+        self.velocity += SPEED
 
     def update(self):
         self.rect.move_ip(0, self.velocity)
@@ -96,7 +98,7 @@ def main():
     background = pygame.Surface([WIDTH, HEIGHT])
     background.fill(pygame.Color("black"))
     for y in range(0, HEIGHT, 10):
-        pygame.draw.line(background, pygame.Color("white"), (WIDTH / 2,y), (WIDTH / 2,y+3))
+        pygame.draw.line(background, pygame.Color("white"), (WIDTH/2,y), (WIDTH/2,y+3))
 
     # draw background on screen
     screen.blit(background, (0, 0))
