@@ -199,7 +199,7 @@ def main():
         # read events from the event queue
         for event in pygame.event.get():
             # on QUIT event, exit the main loop
-            if event.type == pygame.QUIT:
+            if event.type == pygame.QUIT or event.key == pygame.K_SPACE:
                 running = False
 
             # on key press
@@ -208,6 +208,8 @@ def main():
             # on key release
             elif event.type == pygame.KEYUP and event.key in key_map:
                 key_map[event.key][1]()
+
+
 
 
 # if this module is executed as a script, run the main function
