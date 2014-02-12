@@ -155,8 +155,8 @@ class Agent():
         self.ball = ball
 
     def update(self):
-        self.racket.rect.centerx = ball.rect.centerx
-        self.racket.rect.centery = ball.rect.centery
+        
+        self.racket.rect.centery = self.ball.rect.centery
         
 
 # define a main function
