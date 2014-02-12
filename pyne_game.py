@@ -31,6 +31,21 @@ class Ball(Sprite):
         y = random.randint(-3,3)
         self.rect.move_ip(x, y)
 
+class Racket(Sprite):
+    """
+    Handles behaviour of the players racket.
+
+    """
+    def __init__(self, color, position):
+        Sprite.__init__(self)
+        self.image = pygame.Surface([4, 20])
+        self.rect = pygame.Rect(0, 0, 4, 20) # (x, y, width, height)
+        pygame.draw.rect(self.image, pygame.Color(color), self.rect)
+        self.rect.center = position
+
+    def update(self):
+        y = random.randint(-10,10)
+        self.rect.move_ip(0, y)
 
 # define a main function
 def main():
