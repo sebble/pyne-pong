@@ -138,10 +138,12 @@ class Racket(Sprite):
         self.velocity = 0
 
     def up(self):
-        self.velocity -= SPEED
+        if self.velocity < MAX_VELOCITY:
+            self.velocity -= SPEED
 
     def down(self):
-        self.velocity += SPEED
+        if self.velocity < MAX_VELOCITY:
+            self.velocity += SPEED
 
     def update(self):
         self.rect.move_ip(0, self.velocity)
