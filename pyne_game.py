@@ -6,7 +6,7 @@ import random
 import math
 from pygame.sprite import Sprite
 
-WIDTH, HEIGHT = 1024, 768
+WIDTH, HEIGHT = 640, 480
 HEIGHT = int(WIDTH/4.0*3.0)
 SPEED = int(WIDTH/64)
 
