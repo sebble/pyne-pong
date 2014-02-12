@@ -131,12 +131,12 @@ def main():
     # clock to control the game frame rate
     clock = pygame.time.Clock()
 
-    # create the ball sprite
-    ball = Ball("white", (WIDTH/2,HEIGHT/2))
-
     # create two racket sprites
     player1 = Racket("green", (10, HEIGHT/2))
     player2 = Racket("orange", (WIDTH - 10, HEIGHT/2))
+
+    # create the ball sprite
+    ball = Ball("white", (WIDTH/2,HEIGHT/2), [player1, player2])
 
     # A map for keys
     key_map = {
