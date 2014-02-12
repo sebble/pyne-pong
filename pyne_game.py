@@ -67,18 +67,6 @@ def main():
     # draw background on screen
     screen.blit(background, (0, 0))
 
-    # draw a ball (color, position, radius)
-    x, y = width / 2, height / 2
-    pygame.draw.circle(screen, pygame.Color("white"), (x,y), 3)
-
-    # draw racket on the left
-    rectangle = pygame.Rect(10, (height/2)-10, 4, 20) # (x, y, width, height)
-    pygame.draw.rect(screen, pygame.Color("white"), rectangle)
-
-    # draw racket on the right
-    rectangle = pygame.Rect(310-4, (height/2)-10, 4, 20) # (x, y, width, height)
-    pygame.draw.rect(screen, pygame.Color("white"), rectangle)
-
     # display screen surface
     pygame.display.flip()
 
