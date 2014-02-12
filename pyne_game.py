@@ -113,6 +113,7 @@ class Ball(Sprite):
         side = random.choice([-1,1])
         # rotate the velocity vector [5, 0], flip horizontally if side < 0
         self.velocity = [side * SPEED * math.cos(angle), SPEED * math.sin(angle)]
+        
         # restore the ball starting position
         self.rect.center = self.start
 
