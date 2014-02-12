@@ -150,7 +150,7 @@ class Racket(Sprite):
 
 # Make some IA !
 class Agent():
-    def __init__(self, racket):
+    def __init__(self, ball, racket):
         self.racket = racket
 
 # define a main function
@@ -191,7 +191,7 @@ def main():
     ball = Ball("white", (WIDTH/2,HEIGHT/2), [player1, player2], score)
 
     # create the AI
-    ai = Agent(player2)
+    ai = Agent(ball, player2)
 
     # A map for keys
     key_map = {
