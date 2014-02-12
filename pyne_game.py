@@ -47,9 +47,9 @@ class Ball(Sprite):
             self.velocity[1] *= -1
             self.rect.top = 1
         # bounce the ball of the bottom screen border
-        elif self.rect.bottom > 240:
+        elif self.rect.bottom > HEIGHT:
             self.velocity[1] *= -1
-            self.rect.bottom = 239
+            self.rect.bottom = HEIGHT-1
 
     def serve(self):
         # random angle in radians (between 0 and 90 degrees)
