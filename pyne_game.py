@@ -150,10 +150,10 @@ class Racket(Sprite):
 
 # Make some IA !
 class Agent():
-    def __init__(self, ball, racket, mode):
+    def __init__(self, ball, racket, personality):
         self.racket = racket
         self.ball = ball
-        self.mode = mode
+        self.mode = personality
         self.reaction = 40
 
     def update(self):
@@ -161,7 +161,15 @@ class Agent():
         if self.mode == 'Impossible':
             self.racket.rect.centery = self.ball.rect.centery
         
-        elif self.mode == 'Hard':
+        elif self.mode == 'Dizzy':
+            if self.racket.rect.centery > self.ball.rect.centery:
+                self.racket.up()
+            else:
+                self.racket.down()
+
+        elif self.mode == 'Slow':
+            if random.uniform(0,1)>0.1:
+                return
             if self.racket.rect.centery > self.ball.rect.centery:
                 self.racket.up()
             else:
@@ -210,7 +218,7 @@ def main():
     ball = Ball("white", (WIDTH/2,HEIGHT/2), [player1, player2], score)
 
     # create the AI
-    agent = Agent(ball, player2, 'Hard')
+    agent = Agent(ball, player2, 'Slow')
 
     # A map for keys
     key_map = {
