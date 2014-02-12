@@ -150,7 +150,7 @@ class Racket(Sprite):
 
 # Make some IA !
 class Agent():
-    def __init__(racket):
+    def __init__(self, racket):
         self.racket = racket
 
 # define a main function
